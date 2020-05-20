@@ -123,6 +123,10 @@ document.addEventListener("click", function (event) {
       .querySelector(".js-droppable")
       .removeChild(event.target.parentElement);
   }
+  let f = document.querySelector("#codepenform");
+  if (f) {
+    f.remove();
+  }
 });
 
 ["resize", "load"].forEach(function (event) {
