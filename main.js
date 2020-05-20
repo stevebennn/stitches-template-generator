@@ -13,7 +13,7 @@ const fontAwesomePath =
   "https://use.fontawesome.com/releases/v5.6.3/css/all.css";
 const fontAwesomeIntegrity =
   "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/";
-const stitchesHTML = html => `<!DOCTYPE html>
+const stitchesHTML = (html) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -32,13 +32,13 @@ dragula([snippets, droppable], {
   },
   accepts: function (el, target) {
     return target !== snippets;
-  }
+  },
 }).on("drop", (el, target) => {
   el.innerHTML += deleteBtnHtml;
   el.classList.add("relative");
 });
 
-filter.addEventListener("click", event => {
+filter.addEventListener("click", (event) => {
   if (event.target.tagName !== "BUTTON") {
     return;
   }
@@ -73,7 +73,7 @@ function masonry(grid, gridCell, gridGutter, dGridCol, tGridCol, mGridCol) {
   else g.style.height = gHeight / mGridCol + gHeight / (gcLength + 1) + "px";
 }
 
-downloadBtn.addEventListener("click", event => {
+downloadBtn.addEventListener("click", (event) => {
   let selectedBlocks = [];
   let selectedSnippets = document.querySelectorAll(
     ".js-droppable > .js-snippet"
@@ -85,14 +85,12 @@ downloadBtn.addEventListener("click", event => {
   let html = "";
 
   Promise.all(
-    selectedBlocks.map(template =>
-      fetch(`../templates/${template}.html`).then(
-        response => response.text()
-      )
+    selectedBlocks.map((template) =>
+      fetch(`../templates/${template}.html`).then((response) => response.text())
     )
-  ).then(templateString => {
+  ).then((templateString) => {
     html += templateString.join("");
-    fileDownload(stitchesHTML(html), "stitches.html");
+    fileDownload(stitchesHTML(html), "layout.html");
   });
 });
 
