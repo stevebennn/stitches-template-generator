@@ -100,13 +100,13 @@ downloadBtn.addEventListener("click", (event) => {
           "https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css",
       };
 
-      var form = `<form action="https://codepen.io/pen/define" method="POST" target="_blank">
+      var form = `<form action="https://codepen.io/pen/define" method="POST" target="_blank" style="position: absolute;">
     <input type="hidden" name="data" value='${JSON.stringify(options)}'/>
     <input type="image" src="http://s.cdpn.io/3/cp-arrow-right.svg" width="40" height="40" value="Create New Pen with Prefilled Data" class="codepen-mover-button">
     <button type="submit">codepen it up!</button>
     </form>`;
       let el = document.querySelector(".codepen-btn");
-      el.insertAdjacentHTML("beforeend", form);
+      el.insertAdjacentHTML("afterbegin", form);
       console.log(el);
       console.log(form);
     });
