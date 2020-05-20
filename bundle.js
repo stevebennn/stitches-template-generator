@@ -96,7 +96,7 @@ downloadBtn.addEventListener("click", (event) => {
     })
     .then(() => {
       var form = `<form action="https://codepen.io/pen/define" method="POST" target="_blank">
-    <input type="hidden" name="data" value="{"html":${JSON.stringify(html)}}" />
+    <input type="hidden" name="data" value='{"html":${JSON.stringify(html)}}' />
     <input type="image" src="http://s.cdpn.io/3/cp-arrow-right.svg" width="40" height="40" value="Create New Pen with Prefilled Data" class="codepen-mover-button">
     </form>`;
       let el = document.querySelector("body");
