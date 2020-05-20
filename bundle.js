@@ -28,10 +28,10 @@ const stitchesHTML = html => `<!DOCTYPE html>
 </html>`;
 
 dragula([snippets, droppable], {
-  copy: function(el, source) {
+  copy: function (el, source) {
     return source === snippets;
   },
-  accepts: function(el, target) {
+  accepts: function (el, target) {
     return target !== snippets;
   }
 }).on("drop", (el, target) => {
@@ -97,7 +97,7 @@ downloadBtn.addEventListener("click", event => {
   });
 });
 
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
   if (event.target.classList.contains("js-delete-btn")) {
     document
       .querySelector(".js-droppable")
@@ -105,9 +105,9 @@ document.addEventListener("click", function(event) {
   }
 });
 
-["resize", "load"].forEach(function(event) {
-  window.addEventListener(event, function() {
-    imagesLoaded(snippets, function() {
+["resize", "load"].forEach(function (event) {
+  window.addEventListener(event, function () {
+    imagesLoaded(snippets, function () {
       // A masonry grid with 0px gutter, with 2 columns on desktop, 2 on tablet, and 1 column on mobile devices.
       masonry(".js-snippets", ".js-snippet", 0, 2, 2, 1);
     });
