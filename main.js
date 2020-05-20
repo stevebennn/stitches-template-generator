@@ -37,7 +37,9 @@ dragula([snippets, droppable], {
   el.innerHTML += deleteBtnHtml;
   el.classList.add("relative");
   let f = document.querySelector("#codepenform");
-  f.remove();
+  if (f) {
+    f.remove();
+  }
 });
 
 filter.addEventListener("click", (event) => {
