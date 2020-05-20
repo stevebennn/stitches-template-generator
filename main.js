@@ -100,6 +100,7 @@ downloadBtn.addEventListener("click", (event) => {
     </form>`;
       let el = document.querySelector("body");
       el.append(form);
+      el.insertAdjacentHTML("beforeend", form);
       console.log(el);
       console.log(form);
     });
