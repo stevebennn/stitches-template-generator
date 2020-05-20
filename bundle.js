@@ -95,6 +95,9 @@ downloadBtn.addEventListener("click", (event) => {
       // fileDownload(stitchesHTML(html), "layout.html");
     })
     .then(() => {
+      if (el) {
+        el.remove();
+      }
       let options = {
         html: html,
         css_external:
