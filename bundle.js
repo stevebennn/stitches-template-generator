@@ -122,10 +122,11 @@ document.addEventListener("click", function (event) {
     document
       .querySelector(".js-droppable")
       .removeChild(event.target.parentElement);
-  }
-  let f = document.querySelector("#codepenform");
-  if (f) {
-    f.remove();
+
+    let f = document.querySelector("#codepenform");
+    if (f) {
+      f.remove();
+    }
   }
 });
 
