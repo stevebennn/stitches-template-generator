@@ -14,7 +14,7 @@ const fontAwesomePath =
   "https://use.fontawesome.com/releases/v5.6.3/css/all.css";
 const fontAwesomeIntegrity =
   "sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/";
-const stitchesHTML = html => `<!DOCTYPE html>
+const stitchesHTML = (html) => `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -33,13 +33,13 @@ dragula([snippets, droppable], {
   },
   accepts: function (el, target) {
     return target !== snippets;
-  }
+  },
 }).on("drop", (el, target) => {
   el.innerHTML += deleteBtnHtml;
   el.classList.add("relative");
 });
 
-filter.addEventListener("click", event => {
+filter.addEventListener("click", (event) => {
   if (event.target.tagName !== "BUTTON") {
     return;
   }
@@ -74,7 +74,7 @@ function masonry(grid, gridCell, gridGutter, dGridCol, tGridCol, mGridCol) {
   else g.style.height = gHeight / mGridCol + gHeight / (gcLength + 1) + "px";
 }
 
-downloadBtn.addEventListener("click", event => {
+downloadBtn.addEventListener("click", (event) => {
   let selectedBlocks = [];
   let selectedSnippets = document.querySelectorAll(
     ".js-droppable > .js-snippet"
@@ -86,15 +86,24 @@ downloadBtn.addEventListener("click", event => {
   let html = "";
 
   Promise.all(
-    selectedBlocks.map(template =>
-      fetch(`../templates/${template}.html`).then(
-        response => response.text()
-      )
+    selectedBlocks.map((template) =>
+      fetch(`../templates/${template}.html`).then((response) => response.text())
     )
-  ).then(templateString => {
-    html += templateString.join("");
-    fileDownload(stitchesHTML(html), "stitches.html");
-  });
+  )
+    .then((templateString) => {
+      html += templateString.join("");
+      // fileDownload(stitchesHTML(html), "layout.html");
+    })
+    .then(() => {
+      var form = `<form action="https://codepen.io/pen/define" method="POST" target="_blank">
+    <input type="hidden" name="data" value="html:${JSON.stringify(html)}" />
+    <input type="image" src="http://s.cdpn.io/3/cp-arrow-right.svg" width="40" height="40" value="Create New Pen with Prefilled Data" class="codepen-mover-button">
+    </form>`;
+      let el = document.querySelector("body");
+      el.append(form);
+      console.log(el);
+      console.log(form);
+    });
 });
 
 document.addEventListener("click", function (event) {
