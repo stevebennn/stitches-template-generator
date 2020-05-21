@@ -101,7 +101,9 @@ downloadBtn.addEventListener("click", (event) => {
       let options = {
         html: html,
         css_external:
-          "https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css",
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1390/output.css",
+        head:
+          '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap" rel="stylesheet"></link>',
       };
       let el = document.querySelector(".codepen-btn");
 
